@@ -5,10 +5,10 @@ class Error
   attr_accessor :error_container
 
   ERRORS = [
-    {:number => "0", :code => 01, :message => "Not valid Account", :description => "" },
-    {:number => "1", :code => 02, :error => "Not Balance", :description => "" },
-    {:number => "2", :response_code => 03, :response_desc => "Bad Request"},
-    {:number => "3", :response_code => 04, :response_desc => "Required Account Number", :description => ""}
+    {:number => "0", :code => 01, :message => "Not a valid Account", :description => "" },
+    {:number => "1", :code => 02, :error => "Sorry, no Balance due", :description => "" },
+    {:number => "2", :response_code => 03, :response_desc => "Barcode is Invalid"},
+    {:number => "3", :response_code => 04, :response_desc => "Not a Prepaid Number", :description => ""}
   ]
 
   MAGIC_NUMBERS = [
@@ -33,7 +33,7 @@ class Error
     if magic_param.nil?
       return exception_raised = {
         code: "00000",
-        message: "unmapped"
+        message: "Oops. We're sorry, we experienced a problem."
       }
     end
 
@@ -49,7 +49,7 @@ class Error
     else
       exception_raised = {
         code: "00000",
-        message: "unmapped"
+        message: "Oops. We're sorry, we experienced a problem."
       }
     end
     exception_raised
